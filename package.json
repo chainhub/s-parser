@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "nearley": "^2.10.4"
+  },
+  "scripts": {
+    "build": "rm -rf build && npm run compile",
+    "compile": "mkdir -p build && nearleyc src/grammar.ne -o build/grammar.js"
+  }
+}
