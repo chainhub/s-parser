@@ -108,10 +108,14 @@ id -> word {% ([value], loc) => {
     }
 } %}
 
-word -> char:+ {% join(0) %}
+word -> (letter|special) symbol:* {% (data) => data[0] + data[1].join('') %}
 
-char -> [A-Za-z] {% id %}
+
+symbol -> letter {% id %}
+  | digit {% id %}
   | special {% id %}
+
+letter -> [A-Za-z]
 
 special
   -> "+"
@@ -129,3 +133,4 @@ special
   |  ">"
   |  "<"
   |  ":"
+  |  "."
